@@ -24,8 +24,8 @@ def add_to_vocab(VOCAB, ident):
         VOCAB[ident] = 1
 
 def get_bug_prefix(buggy_file):
-    fname = buggy_file.split('/')[-1]
-    return '_'.join(fname.split('_')[:-1])
+    fname = buggy_file.split('/')[-1] # e.g. SHIFT_01-01-2019:00_6_0selectors_buggy.json
+    return '_'.join(fname.split('_')[:-1]) # SHIFT_01-01-2019:00_6_0selectors
 
 def code_group_generator(data_root, file_suffix=['_buggy.json', '_buggy.js', '_fixed.json', '_ast_diff.txt']):
     files = os.listdir(data_root)
@@ -37,14 +37,15 @@ def code_group_generator(data_root, file_suffix=['_buggy.json', '_buggy.js', '_f
             for t in code_group_generator(abs_path, file_suffix):
                 yield t
         elif fname.endswith(file_suffix[0]):
-            prefix = fname.split(file_suffix[0])[0]
+            prefix = fname.split(file_suffix[0])[0] # e.g. 'SHIFT_01-01-2019:00_6_0selectors'
             local_names = []
             for suff in file_suffix:
                 if suff == "_buggy.js":
-                    my_prefix = prefix.replace("SHIFT_", "")
+                    my_prefix = prefix.replace("SHIFT_", "") # e.g. '01-01-2019:00_6_0selectors'
                 else:
                     my_prefix = prefix
                 local_names.append(os.path.join(data_root, my_prefix + suff))
+                # e.g. ['SHIFT_01-01-2019:00_6_0selectors_buggy.json', '01-01-2019:00_6_0selectors_buggy.js', 'SHIFT_01-01-2019:00_6_0selectors_fixed.json', 'SHIFT_01-01-2019:00_6_0selectors_ast_diff.txt']
             yield tuple(local_names)
 
 def get_ref_edges(src_file, pkl_file):

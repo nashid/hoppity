@@ -25,7 +25,7 @@ def make_graph_edits(file_tuple):
 
     f_bug, f_bug_src, f_fixed, f_diff = file_tuple
 
-    sample_name = get_bug_prefix(f_bug)
+    sample_name = get_bug_prefix(f_bug) # e.g. 'SHIFT_01-01-2019:00_6_0selectors'
 
     if os.path.exists(os.path.join(cmd_args.save_dir, sample_name + "_refs.npy")):
         return file_tuple, (None, None), None, ('Already exists', None), vocab
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     pool = multiprocessing.Pool(cmd_args.num_cores)
 
     sample_list = []
-    pbar = tqdm(pool.imap_unordered(make_graph_edits, file_gen))
+    pbar = tqdm(pool.imap_unordered(make_graph_edits, file_gen)) # the argument passed to make_graph_edits is one element in file_gen, which is a file tuple, not the whole generator
     
     f_error_log = open(cmd_args.save_dir + '/error_log.csv', 'w')
     f_test_log = os.path.join(cmd_args.save_dir, "test.txt")
