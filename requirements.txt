@@ -4,7 +4,7 @@ torch-sparse==v0.4.3
 torch-cluster==v1.4.5       
 torch-geometric==v1.3.2
 torch-spline-conv==v1.1.1
-torch-geometric==v1.3.2
+#torch-geometric==v1.3.2 # duplicate
 tqdm
 paramiko
 

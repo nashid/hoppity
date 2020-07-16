@@ -192,6 +192,7 @@ class CodeGraph():
 
         self.contents = {}
         num_ast_nodes = self.num_nodes
+        # Add value nodes(aka. contect_nodes)
         for i in range(num_ast_nodes):
             node = self.node_list[i]
             if node.name is not None and node.node_type not in USELESS_NODES:
@@ -206,7 +207,7 @@ class CodeGraph():
             if k not in self.contents:
                 self.contents[k] = self.add_node(CONTENT_NODE_TYPE, node.name)
 
-
+        #? What are these refs edges?
         if refs is not None:
             for node in ast.nodes:
                 if not str(node.index) in refs: 

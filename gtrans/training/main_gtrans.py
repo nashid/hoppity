@@ -36,7 +36,10 @@ if __name__ == '__main__':
     torch.manual_seed(cmd_args.seed)
     torch.autograd.set_detect_anomaly(True)
 
-    vocab_name = 'vocab_%s.npy' % cmd_args.vocab_type
+    vocab_name = 'vocab.npy'
+    #vocab_name = 'vocab_%s.npy' % cmd_args.vocab_type # vocab_fixes.npy or vocab_full.npy
+    # Problem: no such npy file, only a general vocab.npy is saved
+    # I think the vocab.npy is full vocabulary built from both buggy and fixed
     print('loading value vocab from', vocab_name)
     const_val_vocab = np.load(os.path.join(cmd_args.data_root, vocab_name), allow_pickle=True).item()
     Dataset.set_value_vocab(const_val_vocab)

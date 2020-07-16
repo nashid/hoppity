@@ -84,6 +84,7 @@ if __name__ == '__main__':
     pbar = tqdm(pool.imap_unordered(make_graph_edits, file_gen)) # the argument passed to make_graph_edits is one element in file_gen, which is a file tuple, not the whole generator
     
     f_error_log = open(cmd_args.save_dir + '/error_log.csv', 'w')
+    # ?What's the point of split test and train set here? They will be overwritten in split_train_test.py 
     f_test_log = os.path.join(cmd_args.save_dir, "test.txt")
     f_train_log = os.path.join(cmd_args.save_dir, "train.txt")  
 
