@@ -53,9 +53,11 @@ if __name__ == '__main__':
 
     dataset.load_partition()
     train_gen = dataset.data_gen(cmd_args.batch_size, phase='train', infinite=True)
+    print('--------loading finished')
 
     best_test_loss = None
     model = GraphTrans(cmd_args).to(DEVICE)
+    print('--------model')
     if cmd_args.init_model_dump is not None:
         model.load_state_dict(torch.load(cmd_args.init_model_dump))
         stats_file = os.path.join(os.path.dirname(cmd_args.init_model_dump), 'best_val.stats')
