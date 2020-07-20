@@ -40,7 +40,7 @@ def code_group_generator(data_root, file_suffix=['_buggy.json', '_buggy.js', '_f
             prefix = fname.split(file_suffix[0])[0] # e.g. 'SHIFT_01-01-2019:00_6_0selectors'
             local_names = []
             for suff in file_suffix:
-                if suff == "_buggy.js":
+                if (suff == "_buggy.js" or suff == '_ast_diff.txt'):
                     my_prefix = prefix.replace("SHIFT_", "") # e.g. '01-01-2019:00_6_0selectors'
                 else:
                     my_prefix = prefix

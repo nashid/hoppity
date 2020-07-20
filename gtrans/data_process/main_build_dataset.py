@@ -19,7 +19,9 @@ from gtrans.data_process.utils import code_group_generator, get_bug_prefix, get_
 
 def make_graph_edits(file_tuple):
     vocab = {}
-
+    for f in file_tuple:
+        if not os.path.isfile(f):
+            print(f)
     if any([not os.path.isfile(f) for f in file_tuple]):
         return file_tuple, (None, None), None, ('buggy/fixed/ast_diff file missing', None), vocab
 

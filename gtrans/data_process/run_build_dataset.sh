@@ -1,13 +1,13 @@
 #!/bin/bash
 
-data_root=[INPUT_DIR]
-data_name=[NAME]
+data_root=~/lab/data/small_astJSON
+data_name=contextmltttttzzz
 
-save_dir=[OUTPUT_DIR]
+save_dir=~/lab/data/small_astPKL
 
 python main_build_dataset.py \
     -data_root $data_root \
-    -data_name $data_name \ # no use
+    -data_name $data_name \
     -save_dir $save_dir \
     -max_ast_nodes 500 \
     -gpu 1 \

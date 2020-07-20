@@ -263,7 +263,7 @@ const ast_file = process.argv[3]
 
 const HOPPITY_HOME = __dirname
 var ast = spawnSync("python", [HOPPITY_HOME + "/depickle.py", ast_file])
-ast = ast.stdout.toString().split("\n")[3]
+ast = ast.stdout.toString().split("\n")[3] //empty
 
 ast = JSON.parse(ast)
 
