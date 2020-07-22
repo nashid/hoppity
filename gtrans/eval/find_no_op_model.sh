@@ -1,10 +1,10 @@
-data_name=[NAME]
+data_name=contextmltttttzzz
 
-cooked_root=[DATA_DIR]
-save_dir=[MODEL_DIR]
+cooked_root=/Users/zhutao/lab/data/small_astPKL
+save_dir=/Users/zhutao/lab/data/small_trainingResult
 
-loss_file=[OUTPUT_FILE]
-max_num_diffs=[MAX_NUM_DIFFS]
+loss_file=/Users/zhutao/lab/data/small_trainingResult/OUTPUT_FILE
+max_num_diffs=1
 
 export CUDA_VISIBLE_DEVICES=1
 

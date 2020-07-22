@@ -19,7 +19,8 @@ dataset.load_partition()
 
 torch.set_num_threads(1)
 
-reg = re.escape(cmd_args.save_dir) + r"epoch-([0-9]*).ckpt"
+reg = re.escape(cmd_args.save_dir) + r"/epoch-([0-9]*).ckpt" # was missing forward slash
+# print(reg) # /Users/zhutao/lab/data/small_trainingResult/epoch-([0-9]*).ckpt
 loss_file = cmd_args.loss_file
 loss_dict = {}
 
@@ -40,8 +41,10 @@ else:
 best_loss = None
 best_model = None
 for _dir in tqdm(glob.glob(os.path.join(cmd_args.save_dir, "*.ckpt"))):
+    # print(_dir) # /Users/zhutao/lab/data/small_trainingResult/epoch-10.ckpt
     match = re.match(reg, _dir)
     epoch_num = match.group(1)
+    # print(epoch_num) # 10
 
     if int(epoch_num) < int(cmd_args.start_epoch) or int(epoch_num) in loss_dict or int(epoch_num) > int(cmd_args.end_epoch):
         continue

@@ -180,8 +180,10 @@ class DataSample(object):
         if self._g_edits is None:
             g_edits = []
             with open(self.f_diff, 'r') as f:
-                obj = json.load(f)
+                obj = json.load(f) # better to be list = json.load(f)
+                # [{'edit': 'replace_val!#@$87!#@$ul pic-list:first-child'}]
                 for edit in obj:
+                    # {'edit': 'replace_val!#@$87!#@$ul pic-list:first-child'}
                     g_edits.append(GraphEditCmd(edit["edit"]))
             self._g_edits = g_edits
         return self._g_edits

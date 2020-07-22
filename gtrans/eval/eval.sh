@@ -1,6 +1,6 @@
-data_name=[NAME]
-cooked_root=[DATA_DIR]
-save_dir=[MODEL_DUMP_DIR]
+data_name=contextmltttttzzz
+cooked_root=/Users/zhutao/lab/data/small_astPKL
+save_dir=/Users/zhutao/lab/data/small_trainingResult
 target_model=[PATH_TO_MODEL_TO_EVALUATE]
 
 export CUDA_VISIBLE_DEVICES=0

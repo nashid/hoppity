@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     raw_folder = cmd_args.data_root
 
-    file_gen = code_group_generator(raw_folder)
+    file_gen = code_group_generator(raw_folder) # only buggy.json 51 files generated, not buggy_bable.json 13 files
     print("new vocab")
     VOCAB = {}
     

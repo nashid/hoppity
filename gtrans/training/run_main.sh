@@ -1,7 +1,7 @@
-cooked_root=[INPUT_DIR]
-data_name=[NAME]
+cooked_root=/Users/zhutao/lab/data/small_astPKL
+data_name=contextmltttttzzz
 
-save_dir=[OUTPUT_DIR]
+save_dir=/Users/zhutao/lab/data/small_trainingResult
 
 python main_gtrans.py \
 	-data_root $cooked_root \
