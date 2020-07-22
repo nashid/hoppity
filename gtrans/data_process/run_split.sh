@@ -1,7 +1,7 @@
 #!/bin/bash
 
-save_dir=/home/edinella/test-out/
-raw_src=/home/edinella/one-diff-test/01-2019/
+save_dir=/Users/zhutao/lab/data/small_astPKL
+raw_src=/Users/zhutao/lab/data/small_raw
 
 python split_train_test.py \
     -save_dir $save_dir \

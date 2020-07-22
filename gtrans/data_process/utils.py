@@ -77,8 +77,10 @@ def get_source(sample_name, buggy=True):
     babel_suffix = suffix + "_babel.js"
 
     for raw_src in cmd_args.raw_srcs:
-        b_src1 = os.path.join(raw_src, sample_name.replace("_SHIFT","") + suffix + ".js")
-        b_src2 = os.path.join(raw_src, sample_name.replace("_SHIFT","") + babel_suffix)
+        # b_src1 = os.path.join(raw_src, sample_name.replace("SHIFT_","") + suffix + ".js")
+        # b_src2 = os.path.join(raw_src, sample_name.replace("SHIFT_","") + babel_suffix)
+        b_src1 = os.path.join(raw_src, sample_name.replace("SHIFT_","") + suffix + ".js")
+        b_src2 = os.path.join(raw_src, sample_name.replace("SHIFT_","") + babel_suffix)
         b_src3 = os.path.join(raw_src, sample_name + suffix + ".js")
 
         if not os.path.exists(b_src1) and not os.path.exists(b_src2) and not os.path.exists(b_src3):

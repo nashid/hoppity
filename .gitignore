@@ -23,3 +23,4 @@ gtrans/training/*run_main.sh
 
 package-lock.json
 node_modules/*
+gtrans/data_process/processed.txt
