@@ -1,9 +1,9 @@
 data_name=contextmltttttzzz
 
-cooked_root=/Users/zhutao/lab/data/small_astPKL
-save_dir=/Users/zhutao/lab/data/small_trainingResult
+cooked_root=/Users/zhutao/lab/data/ml_astPKL
+save_dir=/Users/zhutao/lab/data/ml_trainingResult
 
-loss_file=/Users/zhutao/lab/data/small_trainingResult/OUTPUT_FILE
+loss_file=/Users/zhutao/lab/data/ml_trainingResult/OUTPUT_FILE
 max_num_diffs=1
 
 export CUDA_VISIBLE_DEVICES=1

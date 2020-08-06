@@ -146,7 +146,7 @@ for sample_list in tqdm(val_gen):
     for ast in new_asts:
         ast_edits = [x.get_edits() if x.get_edits() else [GraphEditCmd("NoOp")] for x in ast[:cmd_args.topk]]
         new_edits.append(ast_edits)
-
+    print(new_edits)
     true_edits = [s.g_edits for s in sample_list]
     
 

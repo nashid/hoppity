@@ -1,7 +1,7 @@
 data_name=contextmltttttzzz
-cooked_root=/Users/zhutao/lab/data/small_astPKL
-save_dir=/Users/zhutao/lab/data/small_trainingResult
-target_model=[PATH_TO_MODEL_TO_EVALUATE]
+cooked_root=/Users/zhutao/lab/data/ml_astPKL
+save_dir=/Users/zhutao/lab/data/ml_trainingResult
+target_model=/Users/zhutao/lab/data/ml_trainingResult/epoch-20.ckpt
 
 export CUDA_VISIBLE_DEVICES=0
 
@@ -19,7 +19,7 @@ python eval.py \
 	-max_modify_steps 1 \
 	-gpu 0 \
 	-resampling True \
-	-comp_method "bilinear" \
+	-comp_method "mlp" \
 	-bug_type True \
 	-loc_acc True \
 	-val_acc True \

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-data_root=~/lab/data/small_astJSON
+data_root=~/lab/data/ml_astJSON
 data_name=contextmltttttzzz
 
-save_dir=~/lab/data/small_astPKL
+save_dir=~/lab/data/ml_astPKL
 
 python main_build_dataset.py \
     -data_root $data_root \

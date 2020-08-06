@@ -5,6 +5,7 @@ from __future__ import division
 import random
 import torch
 import os
+import glob
 import numpy as np
 from tqdm import tqdm
 import torch.optim as optim
@@ -36,6 +37,13 @@ if __name__ == '__main__':
     torch.manual_seed(cmd_args.seed)
     torch.autograd.set_detect_anomaly(True)
 
+    # remove previously saved ckpt files in save_dir if not empty
+    if os.listdir(cmd_args.save_dir):
+        files = glob.glob(os.path.join(cmd_args.save_dir, '*'))
+        for f in files:
+            print(f)
+            os.remove(f)
+
     vocab_name = 'vocab_%s.npy' % cmd_args.vocab_type # vocab_fixes.npy or vocab_full.npy
     print('loading value vocab from', vocab_name)
     const_val_vocab = np.load(os.path.join(cmd_args.data_root, vocab_name), allow_pickle=True).item()
@@ -50,11 +58,9 @@ if __name__ == '__main__':
 
     dataset.load_partition()
     train_gen = dataset.data_gen(cmd_args.batch_size, phase='train', infinite=True)
-    print('--------loading finished')
 
     best_test_loss = None
     model = GraphTrans(cmd_args).to(DEVICE)
-    print('--------model')
     if cmd_args.init_model_dump is not None:
         model.load_state_dict(torch.load(cmd_args.init_model_dump))
         stats_file = os.path.join(os.path.dirname(cmd_args.init_model_dump), 'best_val.stats')
