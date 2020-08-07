@@ -2,6 +2,7 @@ import os
 import numpy as np
 from time import time
 import torch
+import json
 from tqdm import tqdm
 from gtrans.eval.utils import ast_acc_cnt, setup_dicts, loc_acc_cnt, val_acc_cnt, type_acc_cnt, op_acc_cnt, get_top_k, get_val
 from gtrans.data_process.utils import get_bug_prefix
@@ -10,6 +11,11 @@ from gtrans.common.dataset import Dataset, GraphEditCmd
 from gtrans.model.gtrans_model import GraphTrans
 from gtrans.common.consts import DEVICE
 from gtrans.common.consts import OP_REPLACE_VAL, OP_ADD_NODE, OP_REPLACE_TYPE, OP_DEL_NODE, OP_NONE
+
+# directory to save txt and json output
+save_dir = "/Users/zhutao/lab/data/ml_patch"
+if not os.path.exists(save_dir):
+    os.makedirs(save_dir)
 
 const_val_vocab = np.load(os.path.join(cmd_args.data_root, "vocab_" + cmd_args.vocab_type + ".npy"), allow_pickle=True).item()
 Dataset.set_value_vocab(const_val_vocab)
@@ -61,8 +67,8 @@ bug_dict = {}
 unique_edit = 0
 
 if cmd_args.output_all:
-    open("cor_prefixes.txt", "w").close()
-    open("wrong_prefixes.txt", "w").close()
+    open(os.path.join(save_dir, "cor_prefixes.txt"), "w").close()
+    open(os.path.join(save_dir, "wrong_prefixes.txt"), "w").close()
 
 print("Beam agg", cmd_args.beam_agg)
 
@@ -135,10 +141,10 @@ for sample_list in tqdm(val_gen):
         for prefix in wrong_prefixes:
             w_out_str += str(prefix) + "\n"
 
-        with open("cor_prefixes.txt", "a") as f:
+        with open(os.path.join(save_dir, "cor_prefixes.txt"), "a") as f:
             f.write(out_str)
 
-        with open("wrong_prefixes.txt", "a") as f:
+        with open(os.path.join(save_dir, "wrong_prefixes.txt"), "a") as f:
             f.write(w_out_str)
 
     
@@ -146,7 +152,24 @@ for sample_list in tqdm(val_gen):
     for ast in new_asts:
         ast_edits = [x.get_edits() if x.get_edits() else [GraphEditCmd("NoOp")] for x in ast[:cmd_args.topk]]
         new_edits.append(ast_edits)
-    print(new_edits)
+
+    # save new_edits to JSON patch
+    class GraphEditCmdEncoder(json.JSONEncoder):
+        def default(self, z):
+            if isinstance(z, GraphEditCmd):
+                return z.__dict__
+            else:
+                return super().default(z)
+
+    for (edit, s) in zip(new_edits, sample_list):
+        patch = {
+            "file": s.f_bug,
+            f"top {cmd_args.topk} edits": edit
+        }
+        patch_filename = f"{get_bug_prefix(s.f_bug)}_patch.json"
+        with open(os.path.join(save_dir, patch_filename), "w") as write_file:
+            json.dump(patch, write_file, indent=4, cls=GraphEditCmdEncoder)
+    
     true_edits = [s.g_edits for s in sample_list]
     
 
