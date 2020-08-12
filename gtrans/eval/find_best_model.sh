@@ -4,7 +4,7 @@ cooked_root=/Users/zhutao/lab/data/ml_astPKL
 save_dir=/Users/zhutao/lab/data/ml_trainingResult
 
 loss_file=/Users/zhutao/lab/data/ml_trainingResult/OUTPUT_FILE
-max_num_diffs=1
+max_num_diffs=10
 
 export CUDA_VISIBLE_DEVICES=1
 
