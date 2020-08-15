@@ -1,6 +1,7 @@
 #!/bin/bash
+data_base=/Users/zhutao/lab/data
 
-data_root=~/lab/data/ml_astJSON
+data_root=$data_base/ml_astJSON
 data_name=contextmltttttzzz
 
 save_dir=~/lab/data/ml_astPKL

@@ -170,9 +170,10 @@ for sample_list in tqdm(val_gen):
         with open(os.path.join(save_dir, patch_filename), "w") as write_file:
             json.dump(patch, write_file, indent=4, cls=GraphEditCmdEncoder)
     
+
+
     true_edits = [s.g_edits for s in sample_list]
     
-
     total_op_acc += op_acc_cnt(new_edits, true_edits)
     total_loc_acc += loc_acc_cnt(new_edits, true_edits)
     loc_count += 1

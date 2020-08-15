@@ -1,10 +1,12 @@
+data_base=/Users/zhutao/lab/data
+
 data_name=contextmltttttzzz
 
-cooked_root=/Users/zhutao/lab/data/ml_astPKL
-save_dir=/Users/zhutao/lab/data/ml_trainingResult
+cooked_root=$data_base/ml_astPKL
+save_dir=$data_base/ml_trainingResult
 
-loss_file=/Users/zhutao/lab/data/ml_trainingResult/OUTPUT_FILE
-max_num_diffs=10
+loss_file=$data_base/ml_trainingResult/OUTPUT_FILE
+max_num_diffs=20
 
 export CUDA_VISIBLE_DEVICES=1
 

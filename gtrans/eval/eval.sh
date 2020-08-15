@@ -1,7 +1,9 @@
+data_base=/Users/zhutao/lab/data
+
 data_name=contextmltttttzzz
-cooked_root=/Users/zhutao/lab/data/ml_astPKL
-save_dir=/Users/zhutao/lab/data/ml_trainingResult
-target_model=/Users/zhutao/lab/data/ml_trainingResult/epoch-10.ckpt
+cooked_root=$data_base/ml_astPKL
+save_dir=$data_base/ml_trainingResult
+target_model=$data_base/ml_trainingResult/epoch-30.ckpt
 
 export CUDA_VISIBLE_DEVICES=0
 
@@ -16,7 +18,7 @@ python eval.py \
 	-topk 3 \
 	-gnn_type 's2v_multi' \
 	-max_lv 4 \
-	-max_modify_steps 18 \
+	-max_modify_steps 20 \
 	-gpu 0 \
 	-resampling True \
 	-comp_method "mlp" \
