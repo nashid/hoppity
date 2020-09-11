@@ -14,12 +14,12 @@ dropbox/
 
 *.ipynb_checkpoints/
 gtrans/eval/*loss.txt
-gtrans/eval/find*.sh
-gtrans/eval/run*.sh
-gtrans/data_process/run*.sh
-gtrans/eval/*eval.sh
-gtrans/training/*train.sh
-gtrans/training/*run_main.sh
+# gtrans/eval/find*.sh
+# gtrans/eval/run*.sh
+# gtrans/data_process/run*.sh
+# gtrans/eval/*eval.sh
+# gtrans/training/*train.sh
+# gtrans/training/*run_main.sh
 
 package-lock.json
 node_modules/*
