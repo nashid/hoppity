@@ -4,7 +4,9 @@ RUN conda install python=3.7
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    npm
+    npm \
+    vim \
+    tmux
 WORKDIR /hoppity
 
 COPY requirements.txt ./

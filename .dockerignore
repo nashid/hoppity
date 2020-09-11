@@ -1,7 +1,7 @@
 *.egg-info/
 .DS_Store
 .module_log
-build/
+**/build/
 *.tar.gz
 .vscode/
 __pycache__/
