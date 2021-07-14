@@ -1,4 +1,4 @@
-data_base=/Users/zhutao/lab/data
+data_base=/home/hoppity-data/
 
 cooked_root=$data_base/ml_astPKL
 data_name=contextmltttttzzz

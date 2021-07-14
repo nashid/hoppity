@@ -1,5 +1,5 @@
 #!/bin/bash
-data_base=/Users/zhutao/lab/data
+data_base=/home/hoppity-data/
 
 save_dir=$data_base/ml_astPKL
 raw_src=$data_base/ml_raw
