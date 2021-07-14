@@ -1,9 +1,10 @@
-data_base=/Users/zhutao/lab/data
+data_base=/home/hoppity-data
 
 data_name=contextmltttttzzz
 cooked_root=$data_base/ml_astPKL
 save_dir=$data_base/ml_trainingResult
-target_model=$data_base/ml_trainingResult/epoch-30.ckpt
+target_model=$data_base/ml_trainingResult/epoch-40.ckpt
+eval_dump_folder=$data_base/eval_dump_folder
 
 export CUDA_VISIBLE_DEVICES=0
 
@@ -12,6 +13,7 @@ python eval.py \
 	-data_root $cooked_root \
 	-data_name $data_name \
 	-save_dir $save_dir \
+	-eval_dump_folder $eval_dump_folder \
 	-iters_per_val 100 \
 	-beam_size 3 \
 	-batch_size 10 \
@@ -25,5 +27,5 @@ python eval.py \
 	-bug_type True \
 	-loc_acc True \
 	-val_acc True \
-	-output_all True \
+	-output_all False \
 	$@

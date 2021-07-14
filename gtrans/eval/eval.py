@@ -13,7 +13,7 @@ from gtrans.common.consts import DEVICE
 from gtrans.common.consts import OP_REPLACE_VAL, OP_ADD_NODE, OP_REPLACE_TYPE, OP_DEL_NODE, OP_NONE
 
 # directory to save txt and json output
-save_dir = "/Users/zhutao/lab/data/ml_patch"
+save_dir = "/home/hoppity-data/ml_patch"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 

@@ -1,4 +1,4 @@
-data_base=/Users/zhutao/lab/data
+data_base=/home/hoppity-data
 
 data_name=contextmltttttzzz
 
